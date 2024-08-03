@@ -1,3 +1,5 @@
+const { title } = require('process');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -56,6 +58,9 @@ module.exports = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily:{
+        title: ["Sankofa Display", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
