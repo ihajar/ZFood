@@ -5,14 +5,14 @@ import foodImage from "../assets/food.png";
 const HomePage = () => {
   return (
     <div className="flex flex-col gap-12 items-center">
-      <div className="bg-[#F8F6F2]/60 backdrop-blur-sm rounded-lg shadow-md p-8 flex flex-col gap-5 text-center mx-20 absolute top-20 md:top-40 w-auto ">
+      <div className="bg-[#F8F6F2]/60 backdrop-blur-sm rounded-lg shadow-md p-8 flex flex-col gap-5 text-center mx-20 absolute top-20 md:top-40 w-auto  ">
         <h1 className="text-2xl md:text-5xl font-bold tracking-tight text-[#090A0B]">
           Get the Best Recipes Delivered Instantly
         </h1>
         <span className="text-md md:text-xl">Hungry? We’ve Got You Covered!</span>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto  mt-[50px] md:mt-[0px]">
         <div className="flex flex-col items-center justify-between gap-4 text-center bg-[#F5FBDA] p-7 rounded-3xl">
           <img src={pickImage} alt="" />
           <span className="font-bold text-3xl tracking-tighter">
