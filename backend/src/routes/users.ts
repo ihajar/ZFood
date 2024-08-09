@@ -14,4 +14,8 @@ router.post("/logout", UserController.logout);
 
 router.patch("/:userId", UserController.updateUser);
 
+router.get("/all-users", UserController.getAllUsers);
+
+router.delete("/delete/:userId", UserController.deleteUser);
+
 export default router;

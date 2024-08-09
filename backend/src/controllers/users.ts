@@ -153,6 +153,7 @@ export const updateUser: RequestHandler<UpdateUserParams, unknown, updateUserBod
         if(country) user.country = country;
 
         const updatedUser = await user.save();
+        // const updatedUser = await UserModel.findByIdAndUpdate(userId).exec();
 
         res.status(200).json(updatedUser);
 
@@ -162,5 +163,33 @@ export const updateUser: RequestHandler<UpdateUserParams, unknown, updateUserBod
     
 };
 
+export const getAllUsers: RequestHandler = async(req, res, next) => {
+    try {
+        const allUsers = await UserModel.find().select("+email").exec();
+        res.status(200).json(allUsers);
+    } catch (error) {
+        next(error);
+    }
+};
 
 
+export const deleteUser: RequestHandler<{ userId: string }> = async (req, res, next) => {
+    const userId = req.params.userId;
+    try {
+        const user = await UserModel.findById(userId).exec();
+        
+        if(!user) {
+            throw createHttpError(404, "User not found");
+        }
+
+        const authenticatedUserId = req.session.userId as string | undefined;
+        if(authenticatedUserId !== userId) {
+            throw createHttpError(403, "You are not authorized to delete this user");
+        }
+
+        await UserModel.findByIdAndDelete(userId).exec();
+        res.sendStatus(204);
+    } catch (error) {
+        next(error);
+    }
+}
